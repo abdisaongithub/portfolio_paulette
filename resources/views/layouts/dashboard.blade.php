@@ -31,7 +31,7 @@
                                 class="fas fa-table"></i><span>Features</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('project.index') }}"><i
                                 class="fas fa-hammer"></i><span>Projects</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="register.html"><i
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('social.index') }}"><i
                                 class="fas fa-users"></i><span>Social</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="forgot-password.html"><i
                                 class="fas fa-phone"></i><span>Contact</span></a></li>

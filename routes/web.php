@@ -26,5 +26,8 @@ Route::group(
         Route::resource('project', 'ProjectController');
 
         Route::resource('social', 'SocialController');
+
+        Route::resource('contact', 'ContactController');
+
     }
 );
