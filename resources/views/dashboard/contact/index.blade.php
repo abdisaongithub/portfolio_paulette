@@ -24,14 +24,14 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $contact->name }}</td>
-                    <td>{{ $contact->email }}</td>
+                    <td><a target="_blank" href="mailto:{{ $contact->email }}" > {{ $contact->email }} </a></td>
                     <td> {{ $contact->phone }}</td>
                     <td> {{ $contact->message }}</td>
                     <td>
 {{--                        <a class="btn btn-sm btn-outline-info mr-3"--}}
 {{--                           href="{{ route('contact.edit', $about->id) }}">Edit--}}
 {{--                        </a>--}}
-                        <form class="d-inline" action="{{ route('about.destroy', $about->id) }}" method="post">
+                        <form class="d-inline" action="{{ route('about.destroy', $contact->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-outline-danger"

@@ -33,7 +33,7 @@
                                 class="fas fa-hammer"></i><span>Projects</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('social.index') }}"><i
                                 class="fas fa-users"></i><span>Social</span></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="forgot-password.html"><i
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('contact.index') }}"><i
                                 class="fas fa-phone"></i><span>Contact</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
