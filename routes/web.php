@@ -23,5 +23,8 @@ Route::group(
 
         Route::resource('feature', 'FeatureController');
 
+        Route::resource('project', 'ProjectController');
+
+        Route::resource('social', 'SocialController');
     }
 );

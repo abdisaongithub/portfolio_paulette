@@ -2,84 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('dashboard.project.index', ['projects' => $projects]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('dashboard.project.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(ProjectRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $project = new Project($validated);
+        $project->save();
+
+        return redirect(route('project.index'))->with('success', 'Successfully Create A Project');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Project $project)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Project $project)
     {
-        //
+        return view('dashboard.project.edit', ['project' => $project]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Project $project)
+
+    public function update(ProjectRequest $request, Project $project)
     {
-        //
+        $validated = $request->validated();
+        $project->link = $validated['link'];
+        $project->description = $validated['description'];
+        $project->save();
+
+        return redirect(route('project.index'))->with('success', 'Successfully Create A Project');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect(route('project.index'))->with('success', 'Successfully Deleted A Project');
     }
 }
