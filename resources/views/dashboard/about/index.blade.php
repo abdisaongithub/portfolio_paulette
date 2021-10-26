@@ -1,7 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    <h3><strong>About</strong></h3>
+    <div class="row">
+        <div class="col-3 mr-5">
+            <h3><strong>About</strong></h3>
+        </div>
+        <div class="col ml-5">
+            <a href="{{ route('about.create') }}" class="btn btn-sm btn-outline-success">Add an About</a>
+        </div>
+    </div>
 @endsection
 @section('content')
 

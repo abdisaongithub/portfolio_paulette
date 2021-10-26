@@ -15,9 +15,9 @@
 <div id="wrapper">
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
         <div class="container-fluid d-flex flex-column p-0">
-            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                <div class="sidebar-brand-text mx-3"><span>Contents</span></div>
+            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/">
+                <div class="sidebar-brand-icon "><i class="fas fa-home"></i></div>
+                <div class="sidebar-brand-text mx-3"><span>Home</span></div>
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
@@ -35,6 +35,8 @@
                                 class="fas fa-users"></i><span>Social</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('contact.index') }}"><i
                                 class="fas fa-phone"></i><span>Contact</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('pass.index') }}"><i
+                                class="fas fa-lock"></i><span>Change Password</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
@@ -73,16 +75,22 @@
                         <li class="nav-item dropdown no-arrow" role="presentation">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                                                        data-toggle="dropdown" aria-expanded="false"
-                                                                       href="#"><span
-                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Paulette</span><img
-                                            class="border rounded-circle img-profile"
-                                            src="{{ asset('dashboard/img/avatars/avatar1.jpeg')}} "></a>
+                                                                       href="#">
+                                    <span
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Paulette</span></a>
                                 {{--                                TODO: replace Username and Icon Image--}}
                                 <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" role="presentation" href="#"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </li>
@@ -92,6 +100,8 @@
 
 
             <div class="container-fluid">
+                @include('flash-message')
+
                 @yield('content')
             </div>
 

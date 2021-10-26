@@ -1,7 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    <h3><strong>Features</strong></h3>
+    <div class="row">
+        <div class="col-3 mr-5">
+            <h3><strong>Feature</strong></h3>
+        </div>
+        <div class="col ml-5">
+            <a href="{{ route('feature.create') }}" class="btn btn-sm btn-outline-success">Add a Feature</a>
+        </div>
+    </div>
 @endsection
 @section('content')
 
